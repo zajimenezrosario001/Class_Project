@@ -1,0 +1,24 @@
+#Event display
+
+def Choice(options, name = "player"):
+    #This is a function that takes a list of options and returns the selected option
+    print(f"What is {name} going to do next?")
+    for i in range(len(options)):
+        #print the options
+        print(f"{i + 1}. {options[i]}")
+    
+    #get the choice from the user
+    valid = True
+    while valid:
+        choice = input("Enter the number of your choice: ")
+        #check if the input is a number
+        if choice not in str(range(1, len(options) + 1)):
+            print("Invalid input. Please enter a number.")
+            continue
+        choice = int(choice)
+        #check if the choice is valid
+        if choice < 1 or choice > len(options):
+            print(f"Invalid choice. Please enter a number between 1 and {len(options)}")
+            continue
+
+    return choice - 1
