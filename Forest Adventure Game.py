@@ -8,8 +8,8 @@ def start_game():
 	choice_1()
 
 def save_game(current_choice):
-	save = open(save,w)
-	save.write(current_choice)
+	save = open("save.txt","w")
+	save.write(str(current_choice))
 	save.close()
 
 def check_action(choice, level):
@@ -184,13 +184,40 @@ def Restart():
 
 while True:
 	while True:
-		choice = Input("Welcome to the game!!\nDo new game or load save file? (new/load)")
-			if choice.lower() == "load":
-				file = open(save,r)
-				loading_choice = file.read(1)
-				if loading_choice == "1":
-					choice_1()
-				elif 
+		choice_s = input("Welcome to the game!!\nDo new game or load save file? (new/load)")
+		if choice_s.lower() == "load":
+				try:
+					file = open('save.txt','r')
+					print("Game loaded\n")
+					choice = file.read(1)
+					if choice == "1":
+						choice_1()
+					elif choice == "2":
+						choice_2()
+					elif choice == "3":
+						choice_3()
+					elif choice == "4":
+						choice_4()
+					elif choice == "5": 
+						choice_5()
+					elif choice == "6":
+						choice_6()
+					elif choice == "7":
+						choice_7()
+					elif choice == "8":
+						choice_8()
+					elif choice == "9":
+						choice_9()
+					elif choice == "10":
+						choice_10()
+				except:
+					print("No save file detected.")
+		elif choice_s.lower() == "new":
+			break
+		else:
+			print("Invalid input try again")
+					
+				
 	start_game()
 	again = Restart()
 	if again == False:
