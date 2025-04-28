@@ -4,15 +4,18 @@ import random
 import sys
 
 def start_game():
+	# This function starts the game and introduces the player to the story.
 	print("You wake up in a dark forest with no memory of how you got here. Your goal is to survive and find a way out.\nWrite 'save' to save the game or 'end' if you want to quit.")
 	choice_1()
 
 def save_game(current_choice):
+	# This function saves the current game state to a file.
 	save = open("save.txt","w")
 	save.write(str(current_choice))
 	save.close()
 
 def check_action(choice, level):
+	# This function checks if the player wants to save or end the game.
 	if choice.lower() == "save":
 		save_game(level)
 		print("Game saved!")
@@ -21,7 +24,8 @@ def check_action(choice, level):
 		print("See you next time!")
 		sys.exit(0)
 			
-			
+# The next functions represent different choices the player can make in the game.
+# Each function corresponds to a different part of the story and leads to further choices.
 def choice_1():
 	print("\n1. Follow a faint trail.\n2. Climb a tree to get a better view.")
 	choice = input("Choose: ")
@@ -35,9 +39,10 @@ def choice_1():
 		else:
 			print("You see a river in the distance and decide to head that way.")
 			choice_3()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_1()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_1()
 		
 def choice_2():
 	print("\n1. Keep following the trail.\n2. Go off the path into the trees.")
@@ -51,9 +56,10 @@ def choice_2():
 		else:
 			print("You find a cave entrance.")
 			choice_4()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_2()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_2()
 		
 def choice_3():
 	print("\n1. Follow the river downstream.\n2. Try to catch a fish for food.")
@@ -67,9 +73,10 @@ def choice_3():
 		else:
 			print("You catch a fish and gain strength.")
 			choice_5()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_3()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_3()
 		
 def choice_4():
 	print("\n1. Enter the cave.\n2. Keep walking past it.")
@@ -83,9 +90,10 @@ def choice_4():
 			choice_6()
 	elif choice == "2":
 		choice_6()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_4()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_4()
 		
 def choice_5():
 	print("\n1. Build a boat to escape.\n2. Keep walking along the river.")
@@ -99,9 +107,10 @@ def choice_5():
 			choice_7()
 	elif choice == "2":
 		choice_7()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_5()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_5()
 		
 def choice_6():
 	print("\n1. Climb a mountain for a better view.\n2. Search for signs of humans.")
@@ -115,9 +124,10 @@ def choice_6():
 			choice_8()
 	elif choice == "2":
 		choice_8()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_6()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_6()
 		
 def choice_7():
 	print("\n1. Try to signal for help.\n2. Keep moving forward.")
@@ -126,13 +136,16 @@ def choice_7():
 	if choice == "1":
 		if random.random() < 0.8:
 			print("Nobody sees your signal. You die alone in the forest. Game over.")
+			return
 		else:
 			print("A rescue team finds you! You are saved.")
+			return
 	elif choice == "2":
 		choice_9()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_7()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_7()
 		
 def choice_8():
 	print("\n1. Head toward the smoke.\n2. Avoid it and continue alone.")
@@ -145,9 +158,10 @@ def choice_8():
 			print("It was a friendly group of campers. You are saved!")
 	elif choice == "2":
 		choice_9()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_8()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_8()
 		
 def choice_9():
 	print("\n1. Build a shelter and survive.\n2. Try to hike out of the forest.")
@@ -160,9 +174,10 @@ def choice_9():
 			print("You learn to survive and eventually get rescued!")
 	elif choice == "2":
 		choice_10()
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_9()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_9()
 		
 def choice_10():
 	print("\n1. Follow the sun to navigate.\n2. Use the stars at night.")
@@ -175,11 +190,13 @@ def choice_10():
 			print("You find a road and hitchhike to safety!")
 	elif choice == "2":
 		print("You reach a town after days of walking. You survived!")
-	elif choice.lower() != "save" and choice.lower() != "end":
-		print("Invalid choice. Try again.")
-	choice_10()
+	else:
+		if choice.lower() != "save" and choice.lower() != "end":
+			print("Invalid choice. Try again.")
+		choice_10()
 		
 def Restart():
+	# This function asks the player if they want to play again.
 	while True:
 		answer = input("Do you want to play again? (Yes/No)\n")
 		if answer.lower() == "yes":
@@ -194,14 +211,15 @@ while True:
 	while True:
 		choice_s = input("Welcome to the game!!\nDo new game or load save file? (new/load)\n")
 		choice_s = choice_s.strip(" ")
-		if choice_s.lower() == "load":
+		if choice_s.lower() == "load":  #checks for save file
 				loaded = False
 				try:
 					file = open('save.txt','r')
 					print("Game loaded\n")
-					choice = file.read(1)
+					choice = file.read(1) #gets the number of the saved choice
 					loaded = True
 					file.close()
+					# Redirects to the saved option
 					if choice == "1":
 						choice_1()
 					elif choice == "2":
@@ -223,7 +241,7 @@ while True:
 					elif choice == "10":
 						choice_10()
 				except:
-					if loaded:
+					if loaded:  # If the game did load the game
 						sys.exit(0)
 					print("No save file detected.")
 		elif choice_s.lower() == "new":
